@@ -28,7 +28,7 @@
      font-family: 'Poppins', sans-serif;
      font-size: 14px;
      line-height: 22px;
-     font-weight: 400;
+     font-weight: 300;
      color: #000000;
      background-color: #ffffff;
      overflow-x: hidden;
@@ -81,7 +81,6 @@
      color: #ffffff;
      font-family: 'Poppins', sans-serif;
      font-weight: 400;
-     text-transform: capitalize;
      line-height: 1;
  }
  a,
@@ -92,7 +91,7 @@
  }
  a:focus,
  a:hover {
-     color: #0c359e;
+     color: #d2d2d1;
      outline: none;
      text-decoration: none;
  }
@@ -116,10 +115,10 @@
  
  p {
      font-family: 'Poppins', sans-serif;
-     color: #6b6b6b;
+     color: #000000;
      font-size: 14px;
      line-height: 26px;
-     font-weight: 400;
+     font-weight: 300;
      margin: 0;
  }
  h1,
@@ -132,7 +131,6 @@
      font-weight: 500;
      color: #ffffff;
      margin: 0 0 10px;
-     text-transform: capitalize;
  }
  h1 {
      font-size: 36px;
@@ -777,8 +775,8 @@
      outline: none !important;
  }
  .btn.theme-btn {
-     background-color: #fdf05e;
-     border: none;
+     background-color: transparent;
+     border: solid 1px #000000;
      color: #000000;
      font-size: 14px;
      height: 50px;
@@ -788,8 +786,8 @@
 	 letter-spacing: 0.40px;
  }
  .btn.theme-btn:hover {
-	 -webkit-box-shadow: 0px 12px 20px 0px rgba(253, 240, 94, 0.86);
-	         box-shadow: 0px 12px 20px 0px rgba(253, 240, 94, 0.86);
+	 -webkit-box-shadow: 0px 12px 20px 0px rgba(0, 0, 0, 0.86);
+	         box-shadow: 0px 12px 20px 0px rgba(0, 0, 0, 0.86);
 	 color: #000000;
  }
  
@@ -1067,7 +1065,7 @@ textarea:focus {
     font-size: 16px;
 }
 .social-link li a i {
-    color: #b0b0b0;
+    color: #d2d2d1;
     font-size: 18px;
     margin-right: 10px;
     -webkit-transition: all 0.3s ease 0s;
@@ -1103,7 +1101,7 @@ textarea:focus {
      font-weight: 300;
  }
  .social-icon li a:hover {
-     color: #0c359e;
+     color: #d2d2d1;
  }
  /* Style One */
  .social-icon.style1 li a::after {
@@ -1149,7 +1147,6 @@ textarea:focus {
      font-weight: 300;
      line-height: 42px;
      text-align: center;
-     text-transform: capitalize;
      width: 150px;
  }
  .share-btn a:hover {
@@ -1225,7 +1222,7 @@ textarea:focus {
  }
  .portfolio-menu.hover-1 li:after,
  .menu-hover-1 li a:after {
-     background: #0c359e none repeat scroll 0 0;
+     background: #d2d2d1 none repeat scroll 0 0;
      top: 55px;
      content: "";
      height: 8px;
@@ -1752,7 +1749,6 @@ textarea:focus {
 	line-height: 1;
 	margin: 0 12px;
 	position: relative;
-	text-transform: capitalize;
      -webkit-transition: all 0.3s ease 0s;
      -o-transition: all 0.3s ease 0s;
      transition: all 0.3s ease 0s;
@@ -1884,7 +1880,7 @@ textarea:focus {
 /* Portfolio Style One */
 .style-1 .project-title {
     background-color: #ffffff;
-    border-bottom: 2px solid #0c359e;
+    border-bottom: 2px solid #000000;
     margin: -20px auto 0;
     padding: 20px 0;
     position: relative;
@@ -1920,7 +1916,6 @@ textarea:focus {
 .style-1 .project-title p {
     color: #939393;
     line-height: 1;
-	text-transform: capitalize;
 }
 
 .style-1.column-3 .project-title {
@@ -2093,7 +2088,6 @@ textarea:focus {
 	font-size: 20px;
 	font-weight: 700;
 	margin-bottom: 4px;
-	text-transform: capitalize;
 }
 
 /* Masonry Style Two */
@@ -2180,7 +2174,6 @@ textarea:focus {
   font-size: 24px;
   font-weight: 300;
   margin-bottom: 5px;
-  text-transform: capitalize;
 }
 .portfolio-area.style4 .project-title p {
 	color: #ffffff;
@@ -2870,7 +2863,7 @@ textarea:focus {
      border-top: 3px solid #cccccc;
      border-right: 3px solid #cccccc;
      border-bottom: 3px solid #cccccc;
-     border-left: 3px solid #0c359e;
+     border-left: 3px solid #000000;
      border-radius: 50%;
      -webkit-animation: spinner 500ms infinite linear;
      animation: spinner 500ms infinite linear;
@@ -2916,7 +2909,7 @@ textarea:focus {
      text-align: center;
  }
  #scrollUp:hover {
-     background: #0c359e none repeat scroll 0 0;
+     background: #d2d2d1 none repeat scroll 0 0;
      -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
  }
