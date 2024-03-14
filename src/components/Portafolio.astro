@@ -1,4 +1,6 @@
 ---
+import Brand1 from "@/assets/branding/cerveza-the-pirate.png";
+import Brand2 from "@/assets/branding/pet-airlines.png";
 
 ---
 
@@ -12,10 +14,10 @@
         <div class="portfolio-menu text-center">
           <ul class="clearfix mb-70">
             <li data-filter="*" class="active">All</li>
-            <li data-filter=".web">Web</li>
             <li data-filter=".branding">Branding</li>
-            <li data-filter=".design">Design</li>
-            <li data-filter=".photography">Photography</li>
+            <li data-filter=".diseño">Diseño Gráfico</li>
+            <li data-filter=".design">Editorial</li>
+            <li data-filter=".photography">Motion Graphics</li>
           </ul>
         </div>
         <div class="portfolio-grid fitRows-grid">
@@ -35,18 +37,18 @@
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item web branding percent-50">
+          <div class="grid-item Branding branding percent-50">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/2.jpg"
+                href={Brand1.src}
               >
-                <img src="assets/img/portfolio/2/style1/2.jpg" alt="Gimri" />
+                <img src={Brand1.src} alt="Brand 1" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>New Camis</h4></a>
-                <p>Photography</p>
+                <a href="portfolio-details.html"><h4>Cerveza The Pirate</h4></a>
+                <p>Branding</p>
               </div>
             </div>
           </div>
@@ -67,7 +69,7 @@
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item design percent-50">
+          <div class="grid-item diseño percent-50">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
@@ -83,18 +85,34 @@
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item web branding percent-50">
+          <div class="grid-item diseño percent-50">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/5.jpg"
+                href="assets/img/portfolio/2/style1/4.jpg"
               >
-                <img src="assets/img/portfolio/2/style1/5.jpg" alt="Gimri" />
+                <img src="assets/img/portfolio/2/style1/4.jpg" alt="Gimri" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Real Home</h4></a>
-                <p>Design, Web</p>
+                <a href="portfolio-details.html"><h4>Brochure Mockup</h4></a>
+                <p>Print, Web</p>
+              </div>
+            </div>
+          </div>
+          <!-- Item End -->
+          <div class="grid-item Branding branding percent-50">
+            <div class="single-portfolio">
+              <a
+                class="venobox overlay dark-4"
+                data-gall="gall-img"
+                href={Brand2.src}
+              >
+                <img src={Brand2.src} alt="Brand 2" />
+              </a>
+              <div class="project-title text-center">
+                <a href="portfolio-details.html"><h4>Pet Airline</h4></a>
+                <p>Branding</p>
               </div>
             </div>
           </div>
@@ -115,7 +133,7 @@
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item web branding percent-50 load-more">
+          <div class="grid-item Branding branding percent-50 load-more">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
@@ -131,7 +149,7 @@
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item web design percent-50 load-more">
+          <div class="grid-item Branding design percent-50 load-more">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
@@ -152,7 +170,7 @@
           <a
             class="btn theme-btn mt-80"
             id="load-more-btn"
-            href="javascript:void(0)">Load More</a
+            href="javascript:void(0)">Ver más</a
           >
         </div>
       </div>

@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SobreMi1 from "@/assets/sobre-mi-1.png";
+import SobreMi2 from "@/assets/sobre-mi-2.png";
+
 ---
 
 <Layout title="Sobre mi">
@@ -10,7 +13,8 @@ import Layout from "../layouts/Layout.astro";
         <div class="col-xs-12">
           <div class="slider-caption pt-140 pb-155">
             <h1>
-              About Our <br /> Creative <span class="theme-color">Studio</span>
+              Mi nombre es <br />
+              <span class="theme-color">Leonardo Chigne</span>
             </h1>
           </div>
         </div>
@@ -25,26 +29,37 @@ import Layout from "../layouts/Layout.astro";
         <div class="col-xs-12 col-sm-12 col-md-6">
           <div class="hero-img">
             <ul class="clearfix">
-              <li><img src="assets/img/about/1.jpg" alt="About Image" /></li>
-              <li><img src="assets/img/about/2.jpg" alt="About Image" /></li>
+              <li><img src={SobreMi1.src} alt="Sobre Mi" /></li>
+              <li><img src={SobreMi2.src} alt="Sobre Mi" /></li>
             </ul>
           </div>
         </div>
         <div class="col-xs-12 col-sm-10 col-md-6">
           <div class="hero-text mt-20">
             <h2 class="mb-25">
-              About Our <span class="theme-color">Studio</span>
+              Sobre <span class="theme-color">mi</span>
             </h2>
             <h5 class="mb-10">
-              It uses a dictionary of over 200 Latin words, combined with <br />
-              a handful of model sentence structures.
+              Mi nombre es Leonardo Chigne, soy de Caracas, Venezuela, y poseo
+              una Licenciatura en Comunicación Audiovisual.
             </h5>
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look
+            <p class="mb-2">
+              Desde una edad temprana, he sentido una fascinación por el mundo
+              del diseño gráfico y la animación. Con la explosión de las redes
+              sociales, decidí especializarme en Marketing Digital, reconociendo
+              en este campo una oportunidad de crecimiento y desarrollo
+              profesional.
             </p>
-            <a class="btn theme-btn mt-25" href="contact.html">Contact Us</a>
+            <p class="mb-2">
+              En la actualidad, me encuentro en Madrid, cursando la Maestría en Diseño Gráfico en la UDIT, con el objetivo de ampliar conocimientos en diseño gráfico, branding y editorial.
+            </p>
+            <p class="mb-2">
+              Mi trayectoria incluye experiencia sólida en contenido audiovisual y animación. Desde 2021, he trabajado de manera independiente a través de la plataforma Upwork para empresas de diversas partes del mundo. He colaborado con reconocidas empresas como Nasdaq, Unilever, Gameflip, Virtual Versions, entre otras. Además, formé parte del equipo creativo de Rally on Media, una agencia con sede en Nueva York, especializada en campañas de recaudación para startups.
+            </p>
+            <p class="mb-2">
+              Cuento con dominio de programas como Adobe Photoshop, Illustrator, InDesign, Premiere Pro, After Effects y Figma.
+            </p>
+            <a class="btn theme-btn mt-25" href="contact.html">Contacto</a>
           </div>
         </div>
       </div>

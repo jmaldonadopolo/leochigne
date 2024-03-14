@@ -1,5 +1,6 @@
 ---
-
+import { Image } from 'astro:assets';
+import Logo from "@/assets/logo.svg";
 ---
 
 <!-- Loading Bar Start -->
@@ -16,7 +17,9 @@
         <div class="col-xs-12 col-sm-2 col-md-3">
           <div class="left">
             <div class="logo">
-              <a href="/"><img src="assets/img/logo.png" alt="Gimri" /> </a>
+              <a href="/">
+                <Image height="40" src={Logo} alt="Logo Leo Chigne" />
+              </a>
             </div>
           </div>
         </div>
