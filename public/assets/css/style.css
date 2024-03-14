@@ -60,6 +60,11 @@
      color: #000000;
      padding: 0.2em 0;
  }
+ .bg-about {
+    background: url("/public/background.png") #000000;
+    background-position: center center;
+    background-position: cover;
+ }
  img {
      max-width: 100%;
  }
