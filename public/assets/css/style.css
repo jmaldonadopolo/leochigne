@@ -2562,6 +2562,12 @@ textarea:focus {
 .hero-img li:first-child {
     margin-right: 20px;
 }
+.img-about {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 .hero-text {
   padding: 22px 12px 0 10px;
 }

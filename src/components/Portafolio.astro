@@ -3,6 +3,28 @@ import Brand1 from "@/assets/branding/cerveza-the-pirate.png";
 import Brand2 from "@/assets/branding/pet-airlines.png";
 import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
 
+import Nasdaq1 from "@/assets/motion/nasdaq-cover.jpeg";
+import Nasdaq2 from "@/assets/motion/nasdaq-2.png";
+import Nasdaq3 from "@/assets/motion/nasdaq-3.png";
+import Nasdaq4 from "@/assets/motion/nasdaq-4.png";
+import Nasdaq5 from "@/assets/motion/nasdaq-5.png";
+import Nasdaq6 from "@/assets/motion/nasdaq-6.png";
+
+import Hit1 from "@/assets/motion/hitcheck-1.png";
+import Hit2 from "@/assets/motion/hitcheck-2.png";
+import Hit3 from "@/assets/motion/hitcheck-3.png";
+import Hit4 from "@/assets/motion/hitcheck-4.png";
+import Hit5 from "@/assets/motion/hitcheck-5.png";
+import Hit6 from "@/assets/motion/hitcheck-6.png";
+
+import Jungle1 from "@/assets/motion/jungletales-1.png";
+import Jungle2 from "@/assets/motion/jungletales-2.png";
+import Jungle3 from "@/assets/motion/jungletales-3.png";
+import Jungle4 from "@/assets/motion/jungletales-4.png";
+import Jungle5 from "@/assets/motion/jungletales-5.png";
+import Jungle6 from "@/assets/motion/jungletales-6.png";
+
+import Campaña1 from "@/assets/diseño/campaña-1.png";
 ---
 
 <!-- Portfolio Section Start -->
@@ -22,7 +44,7 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
           </ul>
         </div>
         <div class="portfolio-grid fitRows-grid">
-          <div class="grid-item photography design percent-50">
+          <div class="grid-item design percent-50">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
@@ -32,7 +54,9 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
                 <img src={Editorial1.src} alt="13 cuentos fantasmas" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>13 Cuentos Fantasmas</h4></a>
+                <a href="portfolio-details.html"
+                  ><h4>13 Cuentos Fantasmas</h4></a
+                >
                 <p>Editorial</p>
               </div>
             </div>
@@ -54,18 +78,18 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
             </div>
           </div>
           <!-- Item End -->
-          <div class="grid-item photography design percent-50">
+          <div class="grid-item photography percent-50">
             <div class="single-portfolio">
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/3.jpg"
+                href={Nasdaq2.src}
               >
-                <img src="assets/img/portfolio/2/style1/3.jpg" alt="Gimri" />
+                <img src={Nasdaq1.src} alt="Nasdaq" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Rendered Kitchen</h4></a>
-                <p>Branding, Web</p>
+                <a href="portfolio-details.html"><h4>Nasdaq</h4></a>
+                <p>Motion Graphics</p>
               </div>
             </div>
           </div>
@@ -75,29 +99,15 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/4.jpg"
+                href={Campaña1.src}
               >
-                <img src="assets/img/portfolio/2/style1/4.jpg" alt="Gimri" />
+                <img src={Campaña1.src} alt="Campaña Responsabilidad" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Brochure Mockup</h4></a>
-                <p>Print, Web</p>
-              </div>
-            </div>
-          </div>
-          <!-- Item End -->
-          <div class="grid-item diseño percent-50">
-            <div class="single-portfolio">
-              <a
-                class="venobox overlay dark-4"
-                data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/4.jpg"
-              >
-                <img src="assets/img/portfolio/2/style1/4.jpg" alt="Gimri" />
-              </a>
-              <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Brochure Mockup</h4></a>
-                <p>Print, Web</p>
+                <a href="portfolio-details.html"
+                  ><h4>Campaña Responsabilidad</h4></a
+                >
+                <p>Diseño Gráfico</p>
               </div>
             </div>
           </div>
@@ -123,13 +133,29 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/6.jpg"
+                href={Hit3.src}
               >
-                <img src="assets/img/portfolio/2/style1/6.jpg" alt="Gimri" />
+                <img src={Hit2.src} alt="HitCheck" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Pen Mockup</h4></a>
-                <p>Print, photography</p>
+                <a href="portfolio-details.html"><h4>HitCheck</h4></a>
+                <p>Motion Graphics</p>
+              </div>
+            </div>
+          </div>
+          <!-- Item End -->
+          <div class="grid-item photography percent-50">
+            <div class="single-portfolio">
+              <a
+                class="venobox overlay dark-4"
+                data-gall="gall-img"
+                href={Jungle1.src}
+              >
+                <img src={Jungle6.src} alt="Jungle Tales" />
+              </a>
+              <div class="project-title text-center">
+                <a href="portfolio-details.html"><h4>Jungle Tales</h4></a>
+                <p>Motion Graphics</p>
               </div>
             </div>
           </div>
@@ -149,23 +175,7 @@ import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
               </div>
             </div>
           </div>
-          <!-- Item End -->
-          <div class="grid-item Branding design percent-50 load-more">
-            <div class="single-portfolio">
-              <a
-                class="venobox overlay dark-4"
-                data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/3.jpg"
-              >
-                <img src="assets/img/portfolio/2/style1/3.jpg" alt="Gimri" />
-              </a>
-              <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Minimal Design</h4></a>
-                <p>Branding, Web</p>
-              </div>
-            </div>
-          </div>
-          <!-- Item End -->
+          <!-- Item End -->{Campaña1.src}
         </div>
         <div class="view-all text-center">
           <a
