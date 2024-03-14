@@ -1,6 +1,7 @@
 ---
 import Brand1 from "@/assets/branding/cerveza-the-pirate.png";
 import Brand2 from "@/assets/branding/pet-airlines.png";
+import Editorial1 from "@/assets/editorial/13-cuentos-fantasmas.jpeg";
 
 ---
 
@@ -15,8 +16,8 @@ import Brand2 from "@/assets/branding/pet-airlines.png";
           <ul class="clearfix mb-70">
             <li data-filter="*" class="active">All</li>
             <li data-filter=".branding">Branding</li>
-            <li data-filter=".diseño">Diseño Gráfico</li>
             <li data-filter=".design">Editorial</li>
+            <li data-filter=".diseño">Diseño Gráfico</li>
             <li data-filter=".photography">Motion Graphics</li>
           </ul>
         </div>
@@ -26,13 +27,13 @@ import Brand2 from "@/assets/branding/pet-airlines.png";
               <a
                 class="venobox overlay dark-4"
                 data-gall="gall-img"
-                href="assets/img/portfolio/2/style1/1.jpg"
+                href={Editorial1.src}
               >
-                <img src="assets/img/portfolio/2/style1/1.jpg" alt="Gimri" />
+                <img src={Editorial1.src} alt="13 cuentos fantasmas" />
               </a>
               <div class="project-title text-center">
-                <a href="portfolio-details.html"><h4>Flyer Mockup</h4></a>
-                <p>Design, Mockup</p>
+                <a href="portfolio-details.html"><h4>13 Cuentos Fantasmas</h4></a>
+                <p>Editorial</p>
               </div>
             </div>
           </div>

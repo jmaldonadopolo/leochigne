@@ -1,5 +1,6 @@
 ---
-import LogoFooter from "@/assets/logo-white.svg";
+import { Image } from 'astro:assets';
+import LogoFooter from "@/assets/logo-white-2.png";
 ---
 
 <!-- Footer Section Start -->
@@ -11,7 +12,7 @@ import LogoFooter from "@/assets/logo-white.svg";
           <div class="footer-widget about">
             <div class="title mb-20">
               <a href="/">
-                <img height="40" src={LogoFooter.src} alt="Logo Leo Chigne" />
+                <Image height="50" src={LogoFooter} alt="Logo Leo Chigne" />
               </a>
             </div>
             <p>

@@ -1,18 +1,22 @@
 ---
-
+import { Image } from 'astro:assets';
+import Avatar from "@/assets/hero-avatar.png";
 ---
 
 <!-- Slider Section Start -->
-<div class="slider-area slider-one bg-color-2">
+<div class="slider-area slider-one black-bg">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-7">
         <div class="slider-caption pt-130 pb-250">
           <h1>
-            Diseño gráfico. <br /> <span class="theme-color"
-              >Motion Graphics.</span>
+            Diseño gráfico.<br />
+            Motion Graphics.
           </h1>
         </div>
+      </div>
+      <div class="col-md-5">
+        <Image class="img-responsive" src={Avatar} alt="Foto Leo Chigne" />
       </div>
     </div>
   </div>

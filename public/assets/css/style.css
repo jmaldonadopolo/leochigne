@@ -11,7 +11,7 @@
  /*===========================================================
     CSS INDEX
     ===================
-	
+
 	[ 1. General Code ]
 	[ 2. Typography ]
 	[ 3. Global Classes ]
@@ -142,12 +142,12 @@
  }
  h3 {
      font-size: 22px;
-     font-family: 'Montserrat', sans-serif;
+     font-family: 'Poppins', sans-serif;
      font-weight: 800;
  }
  h4 {
      font-size: 18px;
-     font-family: 'Montserrat', sans-serif;
+     font-family: 'Poppins', sans-serif;
      font-weight: 700;
 	 
  }
@@ -165,8 +165,8 @@
  .poppins {
      font-family: 'Poppins', sans-serif;
  }
- .montserrat {
-     font-family: 'Montserrat', sans-serif;
+ .Poppins {
+     font-family: 'Poppins', sans-serif;
  }
  .no-margin {
      margin: 0;
@@ -628,7 +628,7 @@
      background-color: #ffffff;
  }
  .black-bg {
-     background-color: #1c1e23;
+     background-color: #000000;
  }
  .drak-bg {
      background-color: #000000;
@@ -756,7 +756,7 @@
      transition: all 0.3s ease 0s;
      color: #ffffff;
 	 text-transform: uppercase;
-	 font-family: "Montserrat",sans-serif;
+	 font-family: "Poppins",sans-serif;
 	 text-align: center;
  }
  .btn.focus,
@@ -1212,9 +1212,9 @@ textarea:focus {
      display: block;
      padding: 0;
      position: relative;
-     color: #000000;
+     color: #ffffff;
      font-size: 13px;
-     font-family: 'Montserrat', sans-serif;
+     font-family: 'Poppins', sans-serif;
      font-weight: 700;
      text-transform: uppercase;
 	 letter-spacing: 0.40px;
@@ -1768,7 +1768,7 @@ textarea:focus {
 }
  .portfolio-menu.hover-1 ul li {
      color: #000000;
-     font-family: 'Montserrat', sans-serif;
+     font-family: 'Poppins', sans-serif;
      font-weight: 600;
      letter-spacing: 0.1px;
      margin: 0 16px;
@@ -1801,7 +1801,7 @@ textarea:focus {
  /* Slider Area */
  .slider-two .slider-caption h1,
 .slider-one .slider-caption h1 {
-	color: #000000;
+	color: #ffffff;
 	font-size: 70px;
 	line-height: 80px;
 	margin: 0;
@@ -2109,7 +2109,7 @@ textarea:focus {
 	margin-bottom: 0;
 }
 .masonry-style .project-title p {
-	font-family: "Montserrat",sans-serif;
+	font-family: "Poppins",sans-serif;
 }
 
 /* Masonry Style Three */
@@ -2232,10 +2232,6 @@ textarea:focus {
     font-size: 20px;
     margin: 0;
 }
-.footer-widget.about img {
-	-webkit-filter: brightness(1) invert(1);
-	filter: brightness(1) invert(1);
-}
 .footer-widget.about > p {
   color: #ebebeb;
   font-size: 16px;
@@ -2317,7 +2313,7 @@ textarea:focus {
     border-bottom: 1px solid #5b5b5b;
     color: #5b5b5b;
     display: inline-block;
-    font-family: "Montserrat",sans-serif;
+    font-family: "Poppins",sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
