@@ -1540,7 +1540,7 @@ textarea:focus {
          top: -45px;
      }
      .header-top .navbar-collapse {
-         background: #fff none repeat scroll 0 0;
+         background: #000000 none repeat scroll 0 0;
          padding-right: 15px;
          padding-left: 15px;
          -webkit-box-shadow: 0 1px 4px rgba(2, 3, 3, 0.1);
