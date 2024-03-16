@@ -61,7 +61,7 @@
      padding: 0.2em 0;
  }
  .bg-about {
-    background: url("../../src/assets/background.png") #000000;
+    background: url('../../../src/assets/background.png') #000000;
     background-position: center center;
     background-position: cover;
  }
@@ -2714,13 +2714,13 @@ textarea:focus {
 
 /* Info Box */
 .boxbg-1{
-	background-image: url("../../src/assets/s1.jpg");
+	background-image: url("../../../src/assets/s1.jpg");
 }
 .boxbg-2{
-	background-image: url("../../src/assets/s2.jpg");
+	background-image: url("../../../src/assets/s2.jpg");
 }
 .boxbg-3{
-	background-image: url("../../src/assets/s3.jpg");
+	background-image: url("../../../src/assets/s3.jpg");
 }
 .info-box {
 	border-radius: 5px;
