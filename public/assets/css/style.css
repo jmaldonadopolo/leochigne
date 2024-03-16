@@ -68,6 +68,13 @@
  img {
      max-width: 100%;
  }
+ .LogoLeo {
+    padding: .5rem;
+ }
+ .vertical-align-about {
+    align-items: center;
+    display: flex;
+ }
  .fix {
      overflow: hidden;
  }
@@ -1436,7 +1443,7 @@ textarea:focus {
  .header-top.is-sticky {
      padding-bottom: 15px;
      padding-top: 15px;
-     background: #ffffff;
+     background: #000000;
      left: 0;
      padding: 0px 0;
      position: fixed;
@@ -2560,12 +2567,6 @@ textarea:focus {
 }
 .hero-img li:first-child {
     margin-right: 20px;
-}
-.img-about {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 50%;
 }
 .hero-text {
   padding: 22px 12px 0 10px;
