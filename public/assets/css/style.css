@@ -121,6 +121,12 @@
      -o-transition: all 0.3s ease;
      transition: all 0.3s ease;
  }
+ .link-about {
+    color: #000000;
+    border-bottom: solid 1px #000000;
+    font-weight: 300;
+    text-decoration: none;
+ }
  /* 
 [ 2. Typography ]
 ==========================*/
@@ -2708,13 +2714,13 @@ textarea:focus {
 
 /* Info Box */
 .boxbg-1{
-	background-image: url(../img/bg/s1.jpg);
+	background-image: url("/public/s1.jpg");
 }
 .boxbg-2{
-	background-image: url(../img/bg/s2.jpg);
+	background-image: url("/public/s2.jpg");
 }
 .boxbg-3{
-	background-image: url(../img/bg/s3.jpg);
+	background-image: url("/public/s3.jpg");
 }
 .info-box {
 	border-radius: 5px;
