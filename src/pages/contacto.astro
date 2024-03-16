@@ -1,0 +1,149 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contacto">
+  <!-- Breadcrumbs & Page Title Start -->
+  <div class="breadcrumbs-title white-bg pt-90 pb-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="breadcrumbs-menu">
+            <h2>Contacto</h2>
+            <ul class="clearfix">
+              <li><a href="/">Home</a><span>|</span></li>
+              <li>Contacto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs & Page Title End -->
+  <!-- Contact Section Start -->
+  <div class="contact-area style2 white-bg pt-30 pb-120">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 text-center mobi-mb-50">
+          <div class="info-box overlay dark-3 boxbg-1 mb-30">
+            <div class="d-table relative">
+              <div class="d-table-cell">
+                <h4 class="text-uppercase">Contact address</h4>
+                <span class="v-shape white"></span>
+                <p>17 Street Name here Office, <br /> 80 Newlok US 8.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Info Box End -->
+          <div class="info-box overlay theme-overlay boxbg-2 mb-30">
+            <div class="d-table relative">
+              <div class="d-table-cell">
+                <h4 class="text-uppercase">Let's talk</h4>
+                <span class="v-shape white"></span>
+                <p><a href="tel:+99-885-745-589">+99 885 745 589</a></p>
+                <p><a href="tel:88-5476-5965-5478">88 5476 5965 5478</a></p>
+              </div>
+            </div>
+          </div>
+          <!-- Info Box End -->
+          <div class="info-box overlay dark-3 boxbg-3">
+            <div class="d-table relative">
+              <div class="d-table-cell">
+                <h4 class="text-uppercase">Email Us</h4>
+                <span class="v-shape white"></span>
+                <p><a href="mailto:company@email.com">company@email.com</a></p>
+                <p><a href="mailto:info1234@mail.com">info1234@mail.com</a></p>
+              </div>
+            </div>
+          </div>
+          <!-- Info Box End -->
+        </div>
+        <div class="col-xs-12 col-sm-8">
+          <div class="plr-35">
+            <div class="section-title style2 mb-40">
+              <h2 class="mb-15">Ready to get Started?</h2>
+              <p>
+                There are many variations of passages of Lorem Ipsum available, <br
+                />
+                but the majority have suffered alteration in
+              </p>
+            </div>
+            <div class="contact-form mb-70">
+              <form
+                class="custom-input contact_form"
+                id="contact_form"
+                action="contact-form.php"
+                method="post"
+              >
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <input
+                      type="text"
+                      id="contact_name"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <input
+                      type="email"
+                      id="contact_email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <input
+                      type="text"
+                      id="contact_phone"
+                      name="phone"
+                      placeholder="Phone"
+                    />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <input
+                      type="text"
+                      id="contact_website"
+                      name="website"
+                      placeholder="Website"
+                    />
+                  </div>
+                </div>
+                <textarea
+                  name="message"
+                  id="contact_message"
+                  rows="2"
+                  placeholder="Message"></textarea>
+                <button
+                  class="btn theme-btn mt-15"
+                  type="submit"
+                  name="submit"
+                  id="contact_submit"
+                  data-complete-text="Well done!"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <!-- Contact Form End -->
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.577441359975!2d-3.963407823590949!3d40.5950817447644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd417644f447d0cf%3A0x110c20acfdf372cb!2sC.%20de%20Clara%20Campoamor%2C%2027%2C%2028420%20Parquelagos%2C%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1710605496547!5m2!1ses!2spe"
+              width="700"
+              height="400"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Google Map End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact Section End -->
+</Layout>
