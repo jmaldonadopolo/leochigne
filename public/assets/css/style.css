@@ -66,10 +66,6 @@
  .LogoLeo {
     padding: .5rem;
  }
- .vertical-align-about {
-    align-items: center;
-    display: flex;
- }
  .fix {
      overflow: hidden;
  }
@@ -1467,7 +1463,7 @@ textarea:focus {
  /* Mobile Menu
 --------------*/
  .navbar-toggle .icon-bar {
-     background: #000000;
+     background: #ffffff;
  }
  .navbar-collapse {
      border-top: 0;
