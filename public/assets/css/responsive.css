@@ -194,9 +194,6 @@
 ====================================*/
 @media (max-width: 767px) {
 	
-	.container{
-		width:300px;
-	}
 	.mobi-mb-30{
 		margin-bottom: 30px;
 	}
@@ -291,7 +288,6 @@
 =====================================*/
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
-	.container {width:480px}
 	.masonry-style.style4 .percent-25,
 	.portfolio-area.column-4 .percent-25,
 	.percent-66,

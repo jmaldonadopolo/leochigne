@@ -1577,7 +1577,7 @@ textarea:focus {
 		 padding-top: 10px;
 	 }
      .is-sticky .mainmenu .navbar-collapse {
-         top: 13px;
+         top: 11px;
      }
      .menu-hover-1 li a::after {
          top: 100%;
