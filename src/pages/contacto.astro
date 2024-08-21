@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LogoUpWork from "@/assets/Upwork_Logo.svg";
+import ProfileUpWork from "@/assets/ProfileUpWork.png";
 ---
 
 <Layout title="Contacto">
@@ -30,7 +32,9 @@ import Layout from "../layouts/Layout.astro";
               <div class="d-table-cell">
                 <h4 class="text-uppercase">Dirección de contacto</h4>
                 <span class="v-shape white"></span>
-                <p>Calle Clara Campoamor 27. <br /> Galapagar. Madrid 18420</p>
+                <p>
+                  Calle Barrio de la Suiza nº 9 Bajo F. <br /> Las Rozas 28231 Madrid
+                </p>
               </div>
             </div>
           </div>
@@ -55,9 +59,7 @@ import Layout from "../layouts/Layout.astro";
                 <h4 class="text-uppercase">Email</h4>
                 <span class="v-shape white"></span>
                 <p>
-                  <a href="mailto:contacto@leochigne.com"
-                    >contacto@leochigne.com</a
-                  >
+                  <a href="mailto:leochigne@gmail.com">leochigne@gmail.com</a>
                 </p>
               </div>
             </div>
@@ -67,17 +69,16 @@ import Layout from "../layouts/Layout.astro";
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12">
-          <div>
-            <!-- Google Map -->
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.121734618602!2d-3.873001623594815!3d40.49469105089023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd41837959701d57%3A0x5403cbfb78636d67!2sBo.%20de%20la%20Suiza%2C%209%2C%20Bajo%20F%2C%2028231%20Las%20Rozas%20de%20Madrid%2C%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2spe!4v1721879064144!5m2!1ses!2spe"
-              width="100%"
-              height="400"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <!-- Google Map End -->
+          <div class="text-center">
+            <!-- UpWork -->
+            <img height="30" src={LogoUpWork.src} alt="Logo UpWork" />
+            <a
+              href="https://www.upwork.com/freelancers/~01b991c824881741b8"
+              target="_blank"
+            >
+              <img src={ProfileUpWork.src} alt="Perfil UpWork" />
+            </a>
+            <!-- UpWork -->
           </div>
         </div>
       </div>
