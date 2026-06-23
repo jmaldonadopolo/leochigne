@@ -1,74 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import LogoUpWork from "@/assets/Upwork_Logo.svg";
-import ProfileUpWork from "@/assets/ProfileUpWork.png";
+import Layout from "@/layouts/Layout.astro";
+import ContactCards from "@/components/ContactCards.astro";
+import UpworkCard from "@/components/UpworkCard.astro";
+
+const description =
+  "Contacta con Leonardo Chigne por WhatsApp, email o Upwork para proyectos de diseño, motion graphics y video.";
 ---
 
-<Layout title="Contacto">
-  <!-- Breadcrumbs & Page Title Start -->
-  <div class="breadcrumbs-title white-bg pt-90 pb-80">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="breadcrumbs-menu">
-            <h2>Contacto</h2>
-            <ul class="clearfix">
-              <li><a href="/">Home</a><span>|</span></li>
-              <li>Contacto</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Breadcrumbs & Page Title End -->
-  <!-- Contact Section Start -->
-  <div class="contact-area style2 white-bg pt-30 pb-120">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 text-center mobi-mb-50">
-          <div class="info-box overlay dark-3 boxbg-2 mb-30">
-            <div class="d-table relative">
-              <div class="d-table-cell">
-                <h4 class="text-uppercase">Teléfono</h4>
-                <span class="v-shape white"></span>
-                <p><a href="tel:+34747412444">+34747412444</a></p>
-              </div>
-            </div>
-          </div>
-          <!-- Info Box End -->
-        </div>
-        <div class="col-xs-12 col-sm-6 text-center mobi-mb-50">
-          <div class="info-box overlay dark-3 boxbg-3">
-            <div class="d-table relative">
-              <div class="d-table-cell">
-                <h4 class="text-uppercase">Email</h4>
-                <span class="v-shape white"></span>
-                <p>
-                  <a href="mailto:leochigne@gmail.com">leochigne@gmail.com</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Info Box End -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12">
-          <div class="text-center">
-            <!-- UpWork -->
-            <img height="30" src={LogoUpWork.src} alt="Logo UpWork" />
-            <a
-              href="https://www.upwork.com/freelancers/~01b991c824881741b8"
-              target="_blank"
-            >
-              <img src={ProfileUpWork.src} alt="Perfil UpWork" />
-            </a>
-            <!-- UpWork -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Contact Section End -->
+<Layout
+  title="Contacto"
+  description={description}
+>
+  <ContactCards />
+  <UpworkCard />
 </Layout>

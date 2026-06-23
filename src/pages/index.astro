@@ -1,10 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SliderSection from "@/components/SliderSection.astro";
-import Portafolio from "@/components/Portafolio.astro";
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import PortfolioSection from "@/components/PortfolioSection.astro";
+import Avatar from "@/assets/hero-avatar.png";
+
+const description =
+  "Especialista en branding, motion graphics y video. Más de 10 años de experiencia creando contenido para Nasdaq, Unilever, Workiva y más.";
 ---
 
-<Layout title="Leonardo Chigne - Diseñador Gráfico, Motion Designer y Video Editor">
-  <SliderSection />
-  <Portafolio />
+<Layout
+  title="Leonardo Chigne"
+  description={description}
+  image="/og-image.png"
+>
+  <Hero
+    title="Diseño Gráfico."
+    highlight="Motion Graphics."
+    image={Avatar}
+    imageAlt="Leonardo Chigne"
+  />
+  <PortfolioSection limit={9} />
 </Layout>

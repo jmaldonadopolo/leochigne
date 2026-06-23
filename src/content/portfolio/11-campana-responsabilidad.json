@@ -1,0 +1,8 @@
+{
+  "title": "Campaña Responsabilidad",
+  "client": "Diseño Gráfico",
+  "category": "graphic",
+  "cover": "@/assets/d-grafico/CampRes1.jpg",
+  "featured": false,
+  "order": 11
+}

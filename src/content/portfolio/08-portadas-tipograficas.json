@@ -1,0 +1,8 @@
+{
+  "title": "Portadas Tipográficas",
+  "client": "Editorial",
+  "category": "editorial",
+  "cover": "@/assets/editorial/13-cuentos-fantasmas.jpg",
+  "featured": false,
+  "order": 8
+}

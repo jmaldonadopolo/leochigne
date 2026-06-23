@@ -1,110 +1,118 @@
 ---
 import { Image } from "astro:assets";
-import LogoFooter from "@/assets/logo-blanco.svg";
+import { Icon } from "astro-icon/components";
+import Logo from "@/assets/logo-blanco.svg";
+
+const socials = [
+  {
+    href: "https://www.upwork.com/freelancers/~01b991c824881741b8",
+    label: "Upwork",
+    icon: "simple-icons:upwork",
+  },
+  {
+    href: "https://behance.com/leochigne",
+    label: "Behance",
+    icon: "simple-icons:behance",
+  },
+  {
+    href: "https://www.linkedin.com/in/leonardo-chigne",
+    label: "LinkedIn",
+    icon: "simple-icons:linkedin",
+  },
+  {
+    href: "https://facebook.com/leochigne",
+    label: "Facebook",
+    icon: "simple-icons:facebook",
+  },
+  {
+    href: "https://api.whatsapp.com/send?phone=%2B34747412444",
+    label: "WhatsApp",
+    icon: "simple-icons:whatsapp",
+  },
+];
+
+const year = new Date().getFullYear();
 ---
 
-<!-- Footer Section Start -->
-<footer>
-  <div class="footer-widget-area drak-bg ptb-100">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 col-md-5 mobi-mb-30">
-          <div class="footer-widget about">
-            <div class="title mb-20">
-              <a href="/">
-                <Image height="80" src={LogoFooter} alt="Logo Leo Chigne" />
-              </a>
-            </div>
-            <p>
-              Soy Leonardo Chigne Video & Marketing Creative<br>con +10 años de experiencia en paid media<br>y contenido digital.
-            </p>
-          </div>
-        </div>
-        <!-- /.Widget end -->
-        <div class="col-xs-12 col-sm-4 col-md-4 mobi-mb-30">
-          <div class="footer-widget address">
-            <div class="title mb-20">
-              <h4>Contacto</h4>
-            </div>
-            <ul>
+<footer class="bg-ink text-paper">
+  <div class="container-page py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <a href="/" class="inline-flex" aria-label="Leonardo Chigne - Inicio">
+          <Image
+            src={Logo}
+            alt="Leonardo Chigne"
+            height={48}
+            loading="lazy"
+            class="h-10 w-auto"
+          />
+        </a>
+        <p class="mt-6 max-w-sm text-sm leading-relaxed text-paper/70">
+          Leonardo Chigne — Video &amp; Marketing Creative con +10 años de
+          experiencia en paid media y contenido digital.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-paper/50">
+          Contacto
+        </h2>
+        <ul class="mt-6 space-y-3 text-sm">
+          <li class="flex items-center gap-3">
+            <Icon name="mdi:phone" class="size-4 text-paper/50" aria-hidden="true" />
+            <a
+              href="tel:+34747412444"
+              class="text-paper/80 hover:text-paper"
+              >+34 747 412 444</a
+            >
+          </li>
+          <li class="flex items-center gap-3">
+            <Icon name="mdi:email-outline" class="size-4 text-paper/50" aria-hidden="true" />
+            <a
+              href="mailto:leochigne@gmail.com"
+              class="text-paper/80 hover:text-paper"
+              >leochigne@gmail.com</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-paper/50">
+          Redes sociales
+        </h2>
+        <ul class="mt-6 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+          {
+            socials.map((s) => (
               <li>
-                <span>Teléfono:</span>
-                <a href="tel:+34747412444">+34747412444</a>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group inline-flex items-center gap-3 text-paper/80 hover:text-paper"
+                >
+                  <Icon
+                    name={s.icon}
+                    class="size-4 text-paper/60 group-hover:text-paper transition-colors"
+                    aria-hidden="true"
+                  />
+                  <span>{s.label}</span>
+                </a>
               </li>
-              <li>
-                <span>Email:</span>
-                <a href="mailto:leochigne@gmail.com">leochigne@gmail.com</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- /.Widget end -->
-        <div class="col-xs-12 col-sm-4 col-md-3">
-          <div class="footer-widget social-media">
-            <div class="title mb-20">
-              <h4>Redes Sociales</h4>
-            </div>
-            <div class="social-link">
-              <ul class="clearfix d-inblock">
-                <li>
-                  <a
-                    href="https://www.upwork.com/freelancers/~01b991c824881741b8"
-                    target="_blank"
-                    ><i class="fa-brands fa-upwork mr-10"></i>Perfil UpWork</a
-                  >
-                </li>
-                <li>
-                  <a href="https://behance.com/leochigne" target="_blank"
-                    ><i class="zmdi zmdi-behance"></i> Perfil Behance</a
-                  >
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/leonardo-chigne" target="_blank"
-                    ><i class="zmdi zmdi-linkedin"></i> LinkedIn</a
-                  >
-                </li>
-                <li>
-                  <a href="https://facebook.com/leochigne" target="_blank"
-                    ><i class="zmdi zmdi-facebook"></i> Facebook</a
-                  >
-                </li>
-                <li>
-                  <a href="https://twitter.com/leochigne" target="_blank"
-                    ><i class="zmdi zmdi-twitter"></i> Twitter</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://api.whatsapp.com/send?phone=+34747412444&text=M%C3%A1s%20informaci%C3%B3n%20acerca%20de%20tus%20servicios"
-                    target="_blank"
-                    ><i class="zmdi zmdi-whatsapp"></i> WhatsApp</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <!-- Change your social media link -->
-          </div>
-        </div>
-        <!-- /.Widget end -->
+            ))
+          }
+        </ul>
       </div>
     </div>
   </div>
-  <!-- /.Widget Area End -->
-  <div class="copyright black-bg ptb-15">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <div class="text">
-            <p>
-              <a
-                href="#"
-                target="_blank">leochigne.com</a
-              >. Todos los derechos reservados.
-            </p>
-          </div>
-        </div>
-      </div>
+
+  <div class="border-t border-white/5">
+    <div class="container-page py-6">
+      <p class="text-center text-xs text-paper/50">
+        © {year}
+        <a href="/" class="ml-1 text-paper/70 hover:text-paper">leochigne.com</a>.
+        Todos los derechos reservados.
+      </p>
     </div>
   </div>
 </footer>
-<!-- Footer Section End -->

@@ -1,0 +1,90 @@
+---
+import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import PortfolioFilter from "@/components/PortfolioFilter.astro";
+import PortfolioGrid from "@/components/PortfolioGrid.astro";
+import PortfolioLightbox from "@/components/PortfolioLightbox.astro";
+
+interface Props {
+  limit?: number;
+  heading?: string;
+  showAll?: boolean;
+}
+
+const { limit, heading = "Portafolio", showAll = false } = Astro.props;
+
+const allItems = (await getCollection("portfolio")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const items = limit && !showAll ? allItems.slice(0, limit) : allItems;
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif}",
+  { eager: true }
+);
+
+const galleries = await Promise.all(
+  allItems.map(async (item) => {
+    const coverKey = item.data.cover.replace("@/", "/src/");
+    const coverAsset = allImages[coverKey]?.default;
+    const galleryPaths =
+      item.data.gallery?.map((p) => p.replace("@/", "/src/")) ?? [];
+    const galleryAssets = galleryPaths
+      .map((p) => allImages[p]?.default)
+      .filter((a): a is ImageMetadata => Boolean(a));
+
+    const allAssets = coverAsset
+      ? [coverAsset, ...galleryAssets.filter((a) => a.src !== coverAsset.src)]
+      : galleryAssets;
+
+    const optimized = await Promise.all(
+      allAssets.map((a) =>
+        getImage({ src: a, width: 1600, format: "webp", quality: 82 })
+      )
+    );
+
+    return {
+      id: item.id,
+      title: item.data.title,
+      srcs: optimized.map((o) => o.src),
+      alts: optimized.map(() => item.data.title),
+    };
+  })
+);
+---
+
+<section aria-labelledby="portfolio-title" class="section">
+  <div class="container-page">
+    <h2
+      id="portfolio-title"
+      class="text-center text-3xl font-semibold tracking-tight md:text-4xl"
+    >
+      {heading}
+    </h2>
+    <p class="mx-auto mt-3 max-w-prose text-center text-ink/70">
+      Una selección de proyectos de branding, motion graphics, video y diseño.
+    </p>
+
+    <div class="mt-10">
+      <PortfolioFilter />
+    </div>
+
+    <div class="mt-12">
+      <PortfolioGrid items={items} priority />
+    </div>
+
+    {
+      !showAll && (
+        <div class="mt-16 text-center">
+          <a href="/portafolio" class="btn btn-primary">
+            Ver todos los proyectos
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<PortfolioLightbox galleries={galleries} />

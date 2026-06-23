@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+const cards = [
+  {
+    title: "Teléfono",
+    value: "+34 747 412 444",
+    href: "tel:+34747412444",
+    icon: "mdi:phone",
+  },
+  {
+    title: "Email",
+    value: "leochigne@gmail.com",
+    href: "mailto:leochigne@gmail.com",
+    icon: "mdi:email-outline",
+  },
+];
+---
+
+<section aria-labelledby="contact-title" class="section bg-mist">
+  <div class="container-page">
+    <h2
+      id="contact-title"
+      class="text-center text-3xl font-semibold tracking-tight md:text-4xl"
+    >
+      Hablemos
+    </h2>
+    <p class="mx-auto mt-3 max-w-prose text-center text-ink/70">
+      Disponible para proyectos freelance, colaboraciones y consultas.
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {
+        cards.map((c) => (
+          <a
+            href={c.href}
+            class="surface-card group flex flex-col items-center justify-center transition-transform hover:-translate-y-1"
+          >
+            <Icon
+              name={c.icon}
+              class="size-10 text-paper/80 group-hover:text-paper transition-colors"
+              aria-hidden="true"
+            />
+            <h3 class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-paper/60">
+              {c.title}
+            </h3>
+            <p class="mt-2 text-lg font-medium text-paper md:text-xl">
+              {c.value}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

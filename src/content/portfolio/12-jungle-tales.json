@@ -1,0 +1,9 @@
+{
+  "title": "Jungle Tales",
+  "client": "Jungle Tales",
+  "category": "motion",
+  "cover": "@/assets/motion/jungletales-1.png",
+  "gallery": ["@/assets/motion/jungletales-1.png", "@/assets/motion/jungletales-2.png", "@/assets/motion/jungletales-3.png", "@/assets/motion/jungletales-4.png", "@/assets/motion/jungletales-5.png", "@/assets/motion/jungletales-6.png"],
+  "featured": false,
+  "order": 12
+}

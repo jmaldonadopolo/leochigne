@@ -1,59 +1,115 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Logo from "@/assets/logo-blanco.svg";
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/sobre-mi", label: "Sobre mí" },
+  { href: "/portafolio", label: "Portafolio" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<!-- Loading Bar Start -->
-<div id="loading-wrap">
-  <div class="loading-effect"></div>
-</div>
-<!-- Loading Bar End -->
-<!-- Loading Bar End -->
-<!-- Header Section Start -->
-<header class="header-style-1">
-  <div class="header-top active-sticky black-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-2 col-md-3">
-          <div class="left">
-            <div class="logo">
-              <a href="/">
-                <Image class="LogoLeo" height="80" src={Logo} alt="Logo Leo Chigne" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-10 col-md-9">
-          <div class="right">
-            <nav class="mainmenu menu-hover-1 pull-right">
-              <div class="navbar-header">
-                <button
-                  type="button"
-                  class="navbar-toggle"
-                  data-toggle="collapse"
-                  data-target=".navbar-collapse"
+<header
+  class="sticky top-0 z-50 border-b border-white/5 bg-ink/90 backdrop-blur-md supports-[backdrop-filter]:bg-ink/70 transition-colors"
+  transition:persist
+>
+  <div class="container-page flex h-16 items-center justify-between md:h-20">
+    <a
+      href="/"
+      class="flex items-center gap-2 text-paper"
+      aria-label="Leonardo Chigne - Inicio"
+    >
+      <Image
+        src={Logo}
+        alt="Leonardo Chigne"
+        height={36}
+        loading="eager"
+        class="h-8 w-auto md:h-9"
+      />
+    </a>
+
+    <nav aria-label="Principal" class="hidden md:block">
+      <ul class="flex items-center gap-8 text-sm font-medium tracking-wide">
+        {
+          links.map((l) => {
+            const active =
+              l.href === "/"
+                ? currentPath === "/"
+                : currentPath.startsWith(l.href);
+            return (
+              <li>
+                <a
+                  href={l.href}
+                  aria-current={active ? "page" : undefined}
+                  class:list={[
+                    "relative py-2 text-paper/80 hover:text-paper",
+                    active && "text-paper",
+                  ]}
                 >
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="navbar-collapse collapse clearfix">
-                <ul class="navigation clearfix">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/sobre-mi">Sobre mi</a></li>
-                  <li><a href="/portafolio">Portafolio</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="/contacto">Contacto</a></li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+                  {l.label}
+                  <span
+                    class:list={[
+                      "absolute -bottom-0.5 left-0 h-px bg-paper transition-all",
+                      active ? "w-full" : "w-0",
+                    ]}
+                  />
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <details class="relative md:hidden group">
+      <summary
+        class="grid size-10 cursor-pointer place-items-center rounded-md text-paper marker:hidden [&::-webkit-details-marker]:hidden"
+        aria-label="Abrir menú"
+      >
+        <Icon name="mdi:menu" class="size-6 group-open:hidden" />
+        <Icon name="mdi:close" class="hidden size-6 group-open:block" />
+      </summary>
+      <nav
+        aria-label="Móvil"
+        class="absolute right-0 top-12 w-56 rounded-lg border border-white/10 bg-ink p-4 shadow-xl"
+      >
+        <ul class="flex flex-col gap-1 text-sm font-medium">
+          {
+            links.map((l) => {
+              const active =
+                l.href === "/"
+                  ? currentPath === "/"
+                  : currentPath.startsWith(l.href);
+              return (
+                <li>
+                  <a
+                    href={l.href}
+                    aria-current={active ? "page" : undefined}
+                    class:list={[
+                      "block rounded-md px-3 py-2 text-paper/80 hover:bg-white/5 hover:text-paper",
+                      active && "bg-white/5 text-paper",
+                    ]}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
-<!-- Header Space -->
-<div class="header-space black-bg"></div>
-<!-- Header Section End -->
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLDetailsElement>("details[open]").forEach(
+      (d) => d.removeAttribute("open")
+    );
+  });
+</script>

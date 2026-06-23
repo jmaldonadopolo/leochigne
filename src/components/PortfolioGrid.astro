@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PortfolioCard from "@/components/PortfolioCard.astro";
+
+interface Props {
+  items: CollectionEntry<"portfolio">[];
+  priority?: boolean;
+}
+
+const { items, priority = false } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+>
+  {
+    items.map((item, i) => (
+      <PortfolioCard item={item} index={i} priority={priority} />
+    ))
+  }
+</div>

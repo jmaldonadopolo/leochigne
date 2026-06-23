@@ -1,0 +1,9 @@
+{
+  "title": "Nasdaq",
+  "client": "Nasdaq",
+  "category": "motion",
+  "cover": "@/assets/motion/nasdaq-cover.jpg",
+  "gallery": ["@/assets/motion/nasdaq-2.png", "@/assets/motion/nasdaq-3.png", "@/assets/motion/nasdaq-4.png", "@/assets/motion/nasdaq-5.png", "@/assets/motion/nasdaq-6.png"],
+  "featured": true,
+  "order": 3
+}

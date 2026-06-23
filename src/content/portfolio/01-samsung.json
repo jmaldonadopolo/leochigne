@@ -1,0 +1,9 @@
+{
+  "title": "Samsung",
+  "client": "Samsung",
+  "category": "motion",
+  "cover": "@/assets/samsung/samsung-3.png",
+  "gallery": ["@/assets/samsung/samsung-1.png", "@/assets/samsung/samsung-2.png", "@/assets/samsung/samsung-3.png"],
+  "featured": true,
+  "order": 1
+}

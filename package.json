@@ -1,17 +1,28 @@
 {
   "name": "leochigne.com",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.18.0",
-    "bootstrap": "^5.3.3",
-    "typescript": "^5.4.2"
+    "@astrojs/sitemap": "^3.2.0",
+    "@fontsource/poppins": "^5.2.7",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.87",
+    "@tailwindcss/postcss": "^4.3.1",
+    "astro": "^6.0.0",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "typescript": "^5.6.0"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "title": "Packaging Sardinillas",
+  "client": "Sardinillas",
+  "category": "branding",
+  "cover": "@/assets/branding/sardinillas.jpg",
+  "featured": false,
+  "order": 13
+}

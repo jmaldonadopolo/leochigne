@@ -1,0 +1,9 @@
+{
+  "title": "Dove",
+  "client": "Dove",
+  "category": "video",
+  "cover": "@/assets/dove/dove-1.jpg",
+  "gallery": ["@/assets/dove/dove-1.jpg", "@/assets/dove/dove-2.jpg", "@/assets/dove/dove-3.jpg"],
+  "featured": true,
+  "order": 2
+}

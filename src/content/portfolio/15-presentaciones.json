@@ -1,0 +1,8 @@
+{
+  "title": "Presentaciones Corporativas",
+  "client": "Editorial",
+  "category": "editorial",
+  "cover": "@/assets/editorial/presentación-1.jpg",
+  "featured": false,
+  "order": 15
+}

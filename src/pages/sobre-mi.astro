@@ -1,66 +1,50 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SobreMi1 from "@/assets/about-me.png";
-import Software from "@/assets/Software.png";
+import Layout from "@/layouts/Layout.astro";
+import About from "@/components/About.astro";
+import { Icon } from "astro-icon/components";
+
+const description =
+  "Leonardo Chigne, Magíster en Diseño Gráfico por la UDIT y creativo senior con +10 años de experiencia en video, diseño y marketing digital.";
 ---
 
-<Layout title="Sobre mi">
-  <!-- Slider Section Start -->
-  <div class="slider-area slider-one black-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7">
-          <div class="slider-caption pt-140 pb-155">
-            <h1>
-              Hola soy <br /> Leonardo Chigne
-            </h1>
-          </div>
-        </div>
-        <div class="col-md-5"></div>
-      </div>
-    </div>
-  </div>
-  <!-- Slider Section End -->
-  <!-- Hero Block Section Start -->
-  <div class="hero-block style1 section-ptb">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-5 col-md-5">
-          <div class="">
-            <div class="text-center">
-              <img class="img-responsive" src={SobreMi1.src} alt="Sobre Mi" />
-              <img class="img-responsive" src={Software.src} alt="Software" />
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-7 col-md-7">
-          <div class="hero-text mt-20">
-            <h2 class="mb-2">Sobre mi</h2>
-            <p>
-              Soy Leonardo Chigne, Magíster en Diseño Gráfico por la UDIT (Madrid) y creativo senior con más de 10 años de experiencia en video, diseño y marketing digital. Mi trabajo se centra en la creación de contenido estratégico para publicidad online y paid media, combinando storytelling, motion graphics y enfoque performance.
-            </p>
-            <br>
-            <p>
-              He trabajado con marcas y agencias internacionales como Nasdaq, Unilever y Workiva, desarrollando campañas y piezas optimizadas para Instagram, TikTok, YouTube y entornos de paid ads, siempre orientadas a engagement, conversión y resultados medibles. Más recientemente lideré campañas digitales para el grupo de restauración Gest Food en Madrid, creando contenido para marcas como Salvaje, Arrogante y Okio, contribuyendo al aumento de la interacción digital y a una mayor afluencia de público en los locales.
-            </p>
-            <br>
-            <p>
-              Cuento con experiencia en estrategia de contenido, adaptación de creatividades para medios de pago, uso de herramientas de IA y trabajo con equipos internacionales. Domino Premiere Pro, After Effects y Adobe Creative Suite, y cuento con inglés avanzado.
-            </p>
-            <a
-              class="btn theme-btn mt-25 mr-10"
-              href="https://drive.google.com/file/d/1DgewEBCIGi9tZan_3JYa8hfM2EWvc8U3/view"
-              target="_blank">Descarga mi CV</a
-            >
-            <a
-            class="btn theme-btn mt-25"
-            href="https://www.upwork.com/freelancers/~01b991c824881741b8"
-            target="_blank">Perfil UpWork</a
+<Layout
+  title="Sobre mí"
+  description={description}
+>
+  <section class="surface-dark">
+    <div class="container-page py-20 md:py-28 lg:py-32">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-paper/50">
+          Sobre mí
+        </p>
+        <h1
+          class="text-4xl font-bold leading-[1.05] text-balance md:text-6xl lg:text-7xl"
+        >
+          Hola, soy
+          <span class="block text-paper/60">Leonardo Chigne</span>
+        </h1>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://drive.google.com/file/d/1DgewEBCIGi9tZan_3JYa8hfM2EWvc8U3/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline border-paper text-paper hover:bg-paper hover:text-ink"
           >
-          </div>
+            <Icon name="mdi:download" class="mr-2 size-5" aria-hidden="true" />
+            Descarga mi CV
+          </a>
+          <a
+            href="https://www.upwork.com/freelancers/~01b991c824881741b8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline border-paper text-paper hover:bg-paper hover:text-ink"
+          >
+            <Icon name="simple-icons:upwork" class="mr-2 size-5" aria-hidden="true" />
+            Perfil Upwork
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Hero Block Section End -->
+  </section>
+  <About />
 </Layout>

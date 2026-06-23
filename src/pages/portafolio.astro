@@ -1,7 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Porta from "@/components/Portafolio.astro";
+import Layout from "@/layouts/Layout.astro";
+import PortfolioSection from "@/components/PortfolioSection.astro";
+
+const description =
+  "Portafolio de proyectos de branding, motion graphics, video editing y diseño gráfico de Leonardo Chigne.";
 ---
-<Layout title="Portafolio">
-	<Porta />
+
+<Layout
+  title="Portafolio"
+  description={description}
+>
+  <PortfolioSection heading="Todos los proyectos" showAll />
 </Layout>

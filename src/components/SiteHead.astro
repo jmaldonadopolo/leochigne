@@ -1,0 +1,68 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  type?: "website" | "article" | "profile";
+}
+
+const {
+  title,
+  description,
+  image = "/og-image.png",
+  canonical = Astro.url.href,
+  type = "website",
+} = Astro.props;
+
+const siteName = "Leonardo Chigne";
+const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
+const canonicalUrl = new URL(canonical);
+const imageUrl = new URL(image, Astro.site ?? canonicalUrl.origin).href;
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Leonardo Chigne",
+  jobTitle: "Diseñador Gráfico y Motion Designer",
+  url: Astro.site?.href,
+  email: "mailto:leochigne@gmail.com",
+  telephone: "+34-747-412-444",
+  sameAs: [
+    "https://www.upwork.com/freelancers/~01b991c824881741b8",
+    "https://behance.com/leochigne",
+    "https://www.linkedin.com/in/leonardo-chigne",
+    "https://facebook.com/leochigne",
+  ],
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="theme-color" content="#000000" />
+<meta name="color-scheme" content="light" />
+<meta name="generator" content={Astro.generator} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:locale" content="es_ES" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(personLd)} />

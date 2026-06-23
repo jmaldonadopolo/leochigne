@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-charcoal: #191b20;
+  --color-mute: #d2d2d1;
+  --color-accent: #0c359e;
+  --color-mist: #f6f9f8;
+  --color-border: #e7e7e7;
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --container-prose: 65ch;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-paper text-ink;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  h1, h2, h3, h4 {
+    @apply font-semibold tracking-tight;
+  }
+  a {
+    transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease, opacity 200ms ease, transform 200ms ease;
+  }
+  img {
+    @apply max-w-full h-auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center h-12 px-8 rounded-md font-bold tracking-wide uppercase text-sm transition-colors border;
+  }
+  .btn-primary {
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+  }
+  .btn-outline {
+    border-color: currentColor;
+    color: inherit;
+    background-color: transparent;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  .surface-dark {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .surface-card {
+    @apply relative overflow-hidden rounded-2xl text-paper p-10 md:p-12 text-center;
+    background-color: rgba(25, 27, 32, 0.85);
+  }
+  .surface-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 300ms ease;
+  }
+  .surface-card:hover::before {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .surface-card > * {
+    position: relative;
+  }
+  .filter-btn[aria-pressed="true"] {
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+  .filter-btn[aria-pressed="true"]::after {
+    background-color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .ring-accent { --tw-ring-color: var(--color-accent); }
+}

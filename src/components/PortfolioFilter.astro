@@ -1,0 +1,65 @@
+---
+import type { PortfolioCategory } from "../content.config";
+import { portfolioCategories } from "../content.config";
+
+const categoryLabels: Record<PortfolioCategory, string> = {
+  branding: "Branding",
+  editorial: "Editorial",
+  graphic: "Diseño Gráfico",
+  motion: "Motion Graphics",
+  video: "Video Editing",
+};
+
+const filters: { value: "all" | PortfolioCategory; label: string }[] = [
+  { value: "all", label: "Todos" },
+  ...portfolioCategories.map((c) => ({
+    value: c,
+    label: categoryLabels[c],
+  })),
+];
+---
+
+<div
+  role="tablist"
+  aria-label="Filtrar portafolio por categoría"
+  class="flex flex-wrap items-center justify-center gap-2"
+>
+  {
+    filters.map((f, i) => (
+      <button
+        type="button"
+        role="tab"
+        data-filter={f.value}
+        aria-pressed={i === 0 ? "true" : "false"}
+        class:list={[
+          "filter-btn relative rounded-full border border-ink/15 px-5 py-2 text-sm font-medium text-ink/70 transition-colors hover:border-ink hover:text-ink",
+        ]}
+      >
+        {f.label}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const init = () => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>("[data-cat]");
+
+    const apply = (value: string) => {
+      cards.forEach((c) => {
+        const show = value === "all" || c.dataset.cat === value;
+        c.classList.toggle("hidden", !show);
+      });
+      buttons.forEach((b) => {
+        b.setAttribute("aria-pressed", String(b.dataset.filter === value));
+      });
+    };
+
+    buttons.forEach((b) => {
+      b.addEventListener("click", () => apply(b.dataset.filter || "all"));
+    });
+  };
+
+  document.addEventListener("astro:page-load", init);
+</script>

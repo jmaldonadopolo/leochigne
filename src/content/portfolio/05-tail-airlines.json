@@ -1,0 +1,8 @@
+{
+  "title": "Tail Airlines",
+  "client": "Tail Airlines",
+  "category": "branding",
+  "cover": "@/assets/branding/pet-airlines.jpg",
+  "featured": true,
+  "order": 5
+}
