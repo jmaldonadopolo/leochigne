@@ -1,8 +1,7 @@
 {
   "title": "Carteles",
   "client": "Diseño Gráfico",
-  "category": "graphic",
-  "cover": "@/assets/d-grafico/cartel-1.jpg",
-  "featured": false,
-  "order": 9
+  "category": "diseño",
+  "slug": "09-carteles",
+  "images": ["cartel-1.jpg"]
 }

@@ -1,50 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
 import About from "@/components/About.astro";
-import { Icon } from "astro-icon/components";
+import SeoBreadcrumb from "@/components/SeoBreadcrumb.astro";
 
 const description =
-  "Leonardo Chigne, Magíster en Diseño Gráfico por la UDIT y creativo senior con +10 años de experiencia en video, diseño y marketing digital.";
+  "Magíster en Diseño Gráfico por la UDIT (Madrid) y creativo senior con +10 años de experiencia en video, diseño y marketing digital. Mi trabajo combina storytelling, motion graphics y paid media para marcas internacionales.";
 ---
 
 <Layout
-  title="Sobre mí"
+  title="Sobre mí - Leonardo Chigne"
   description={description}
 >
-  <section class="surface-dark">
-    <div class="container-page py-20 md:py-28 lg:py-32">
-      <div class="max-w-3xl">
-        <p class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-paper/50">
-          Sobre mí
-        </p>
-        <h1
-          class="text-4xl font-bold leading-[1.05] text-balance md:text-6xl lg:text-7xl"
-        >
-          Hola, soy
-          <span class="block text-paper/60">Leonardo Chigne</span>
-        </h1>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href="https://drive.google.com/file/d/1DgewEBCIGi9tZan_3JYa8hfM2EWvc8U3/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline border-paper text-paper hover:bg-paper hover:text-ink"
-          >
-            <Icon name="mdi:download" class="mr-2 size-5" aria-hidden="true" />
-            Descarga mi CV
-          </a>
-          <a
-            href="https://www.upwork.com/freelancers/~01b991c824881741b8"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline border-paper text-paper hover:bg-paper hover:text-ink"
-          >
-            <Icon name="simple-icons:upwork" class="mr-2 size-5" aria-hidden="true" />
-            Perfil Upwork
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero title="Hola soy" highlight="Leonardo Chigne" showImage={false} />
   <About />
+  <SeoBreadcrumb name="Sobre mí" path="/sobre-mi" />
 </Layout>

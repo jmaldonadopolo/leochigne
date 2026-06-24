@@ -1,8 +1,7 @@
 {
   "title": "Turntable",
   "client": "Turntable",
-  "category": "motion",
-  "cover": "@/assets/motion/turn-1.jpg",
-  "featured": false,
-  "order": 10
+  "category": "photography",
+  "slug": "10-turntable",
+  "images": ["turn-1.jpg"]
 }

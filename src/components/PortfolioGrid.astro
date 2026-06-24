@@ -10,12 +10,12 @@ interface Props {
 const { items, priority = false } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
->
-  {
-    items.map((item, i) => (
-      <PortfolioCard item={item} index={i} priority={priority} />
-    ))
-  }
+<div class="portfolio-grid mx-[-15px] mb-[-30px]">
+  <div class="flex flex-wrap">
+    {
+      items.map((item, i) => (
+        <PortfolioCard item={item} index={i} priority={priority} />
+      ))
+    }
+  </div>
 </div>

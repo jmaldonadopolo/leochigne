@@ -1,140 +1,198 @@
 ---
-import { Icon } from "astro-icon/components";
-
-interface Gallery {
-  id: string;
-  title: string;
-  srcs: string[];
-  alts: string[];
-}
-
-interface Props {
-  galleries: Gallery[];
-}
-
-const { galleries } = Astro.props;
-
-const galleriesJson = JSON.stringify(
-  galleries.map((g) => ({
-    id: g.id,
-    title: g.title,
-    srcs: g.srcs,
-    alts: g.alts,
-  }))
-);
+import "photoswipe/style.css";
 ---
 
-<dialog
-  id="lightbox"
-  class="m-0 h-screen max-h-screen w-screen max-w-screen bg-transparent p-0 backdrop:bg-ink/90"
-  aria-label="Visor de imagen"
->
-  <button
-    type="button"
-    command="close"
-    commandfor="lightbox"
-    aria-label="Cerrar"
-    class="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full bg-paper/10 text-paper hover:bg-paper/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-paper"
-  >
-    <Icon name="mdi:close" class="size-6" aria-hidden="true" />
-  </button>
-
-  <button
-    type="button"
-    data-lb-prev
-    aria-label="Imagen anterior"
-    class="absolute left-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-paper/10 text-paper hover:bg-paper/20 disabled:opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-paper"
-    disabled
-  >
-    <Icon name="mdi:chevron-left" class="size-7" aria-hidden="true" />
-  </button>
-
-  <button
-    type="button"
-    data-lb-next
-    aria-label="Imagen siguiente"
-    class="absolute right-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-paper/10 text-paper hover:bg-paper/20 disabled:opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-paper"
-    disabled
-  >
-    <Icon name="mdi:chevron-right" class="size-7" aria-hidden="true" />
-  </button>
-
-  <figure class="grid h-full place-items-center px-4 py-16">
-    <img
-      data-lb-img
-      src=""
-      alt=""
-      class="max-h-[80vh] max-w-full rounded-md object-contain shadow-2xl"
-    />
-    <figcaption
-      data-lb-caption
-      class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-ink/70 px-4 py-2 text-xs text-paper"
-    ></figcaption>
-  </figure>
-</dialog>
-
-<script type="application/json" id="lightbox-data" is:inline set:html={galleriesJson} />
-
 <script>
-  const setup = () => {
-    const dlg = document.getElementById("lightbox") as HTMLDialogElement | null;
-    const img = document.querySelector<HTMLImageElement>("[data-lb-img]");
-    const caption = document.querySelector<HTMLElement>("[data-lb-caption]");
-    const prev = document.querySelector<HTMLButtonElement>("[data-lb-prev]");
-    const next = document.querySelector<HTMLButtonElement>("[data-lb-next]");
-    const dataEl = document.getElementById("lightbox-data");
-    if (!dlg || !img || !caption || !prev || !next || !dataEl) return;
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
 
-    type Gallery = { id: string; title: string; srcs: string[]; alts: string[] };
-    const galleries: Record<string, Gallery> = JSON.parse(dataEl.textContent || "{}");
+  let lightboxes: any[] = [];
 
-    let current: Gallery | null = null;
-    let idx = 0;
-
-    const render = () => {
-      if (!current) return;
-      img!.src = current.srcs[idx];
-      img!.alt = current.alts[idx] ?? current.title;
-      caption!.textContent = `${current.title} · ${idx + 1} / ${current.srcs.length}`;
-      prev!.disabled = idx === 0;
-      next!.disabled = idx === current.srcs.length - 1;
-    };
-
-    const open = (galleryId: string, startIdx: number) => {
-      current = galleries[galleryId] ?? null;
-      if (!current || current.srcs.length === 0) return;
-      idx = Math.min(startIdx, current.srcs.length - 1);
-      render();
-      dlg!.showModal();
-    };
-
-    prev.addEventListener("click", () => {
-      if (idx > 0) { idx--; render(); }
+  const destroyLightboxes = () => {
+    lightboxes.forEach((lb) => {
+      try {
+        lb.destroy();
+      } catch (e) {}
     });
-    next.addEventListener("click", () => {
-      if (current && idx < current.srcs.length - 1) { idx++; render(); }
-    });
-    dlg.addEventListener("click", (e) => {
-      if (e.target === dlg) dlg.close();
-    });
-    dlg.addEventListener("close", () => {
-      img!.src = "";
-    });
-    document.addEventListener("keydown", (e) => {
-      if (!dlg.open) return;
-      if (e.key === "ArrowLeft") prev.click();
-      if (e.key === "ArrowRight") next.click();
-    });
+    lightboxes = [];
+  };
 
-    document.querySelectorAll<HTMLAnchorElement>("[data-lightbox]").forEach((a) => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const galleryId = a.dataset.galleryId;
-        if (!galleryId) return;
-        open(galleryId, 0);
+  const initLightbox = () => {
+    destroyLightboxes();
+
+    document.querySelectorAll(".pswp-gallery").forEach((gallery) => {
+      const thumbImgs = Array.from(
+        gallery.querySelectorAll<HTMLImageElement>("a > img")
+      ).map((img) => img.src);
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: gallery as HTMLElement,
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+        bgOpacity: 0.95,
+        showHideAnimationType: "fade",
+        showAnimationDuration: 300,
+        hideAnimationDuration: 300,
+        padding: { top: 70, bottom: 120, left: 24, right: 24 },
+        arrowPrev: true,
+        arrowNext: true,
+        counter: true,
+        closeOnVerticalDrag: true,
+        imageClickAction: "zoom",
+        tapAction: "toggle-controls",
+        closeTitle: "Cerrar (Esc)",
+        arrowPrevTitle: "Imagen anterior",
+        arrowNextTitle: "Imagen siguiente",
+        zoomTitle: "Zoom",
       });
+
+      if (thumbImgs.length > 1) {
+        lightbox.on("uiRegister", () => {
+          const pswp = lightbox.pswp as any;
+          if (!pswp || !pswp.ui) return;
+
+          pswp.ui.registerElement({
+            name: "thumbnailsStrip",
+            className: "pswp__thumbnails-strip",
+            appendTo: "root",
+            onInit: (el: HTMLElement, pswp: any) => {
+              const numItems = pswp.getNumItems();
+              if (numItems <= 1) {
+                el.style.display = "none";
+                return;
+              }
+
+              const thumbs: HTMLButtonElement[] = [];
+              const strip = document.createElement("div");
+              strip.className = "pswp__thumbs-track";
+
+              for (let i = 0; i < numItems; i++) {
+                const thumb = document.createElement("button");
+                thumb.type = "button";
+                thumb.className = "pswp__thumb";
+                thumb.setAttribute("aria-label", `Ir a imagen ${i + 1}`);
+                const img = document.createElement("img");
+                if (thumbImgs[i]) {
+                  img.src = thumbImgs[i];
+                }
+                img.alt = "";
+                img.loading = "lazy";
+                thumb.appendChild(img);
+                thumb.addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  pswp.goTo(i);
+                });
+                strip.appendChild(thumb);
+                thumbs.push(thumb);
+              }
+
+              el.appendChild(strip);
+
+              pswp.on("change", () => {
+                thumbs.forEach((t, i) => {
+                  t.classList.toggle("pswp__thumb--active", i === pswp.currIndex);
+                });
+                const active = thumbs[pswp.currIndex];
+                if (active) {
+                  active.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "center",
+                    block: "nearest",
+                  });
+                }
+              });
+
+              if (thumbs[pswp.currIndex]) {
+                thumbs[pswp.currIndex].classList.add("pswp__thumb--active");
+              }
+            },
+          });
+        });
+      }
+
+      lightbox.init();
+      lightboxes.push(lightbox);
     });
   };
 
-  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:page-load", initLightbox);
+  document.addEventListener("astro:before-swap", destroyLightboxes);
 </script>
+
+<style is:global>
+  .pswp {
+    --pswp-icon-color: #ffffff;
+    --pswp-icon-color-secondary: rgba(255, 255, 255, 0.7);
+  }
+
+  .pswp__thumbnails-strip {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    max-width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pswp__thumbs-track {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .pswp__thumbs-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pswp__thumb {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 42px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    display: block;
+  }
+
+  .pswp__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .pswp__thumb--active {
+    border-color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  .pswp__thumb:hover:not(.pswp__thumb--active) {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 640px) {
+    .pswp__thumb {
+      width: 44px;
+      height: 33px;
+    }
+    .pswp__thumbs-track {
+      gap: 6px;
+      padding: 6px;
+    }
+  }
+</style>

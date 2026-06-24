@@ -1,9 +1,7 @@
 {
   "title": "HitCheck",
   "client": "HitCheck",
-  "category": "motion",
-  "cover": "@/assets/motion/hitcheck-4.png",
-  "gallery": ["@/assets/motion/hitcheck-1.png", "@/assets/motion/hitcheck-2.png", "@/assets/motion/hitcheck-3.png", "@/assets/motion/hitcheck-4.png", "@/assets/motion/hitcheck-5.png", "@/assets/motion/hitcheck-6.png"],
-  "featured": false,
-  "order": 6
+  "category": "photography",
+  "slug": "06-hitcheck",
+  "images": ["hitcheck-4.png", "hitcheck-1.png", "hitcheck-2.png", "hitcheck-3.png", "hitcheck-5.png", "hitcheck-6.png"]
 }

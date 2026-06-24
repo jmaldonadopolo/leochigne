@@ -1,28 +1,18 @@
 ---
-import type { PortfolioCategory } from "../content.config";
-import { portfolioCategories } from "../content.config";
-
-const categoryLabels: Record<PortfolioCategory, string> = {
-  branding: "Branding",
-  editorial: "Editorial",
-  graphic: "Diseño Gráfico",
-  motion: "Motion Graphics",
-  video: "Video Editing",
-};
-
-const filters: { value: "all" | PortfolioCategory; label: string }[] = [
+const filters = [
   { value: "all", label: "Todos" },
-  ...portfolioCategories.map((c) => ({
-    value: c,
-    label: categoryLabels[c],
-  })),
+  { value: "branding", label: "Branding" },
+  { value: "design", label: "Editorial" },
+  { value: "diseño", label: "Diseño Gráfico" },
+  { value: "photography", label: "Motion Graphics" },
+  { value: "video", label: "Video Editing" },
 ];
 ---
 
 <div
   role="tablist"
   aria-label="Filtrar portafolio por categoría"
-  class="flex flex-wrap items-center justify-center gap-2"
+  class="mb-12 flex flex-wrap items-center justify-center gap-2 md:mb-14"
 >
   {
     filters.map((f, i) => (
@@ -30,9 +20,12 @@ const filters: { value: "all" | PortfolioCategory; label: string }[] = [
         type="button"
         role="tab"
         data-filter={f.value}
-        aria-pressed={i === 0 ? "true" : "false"}
+        aria-selected={i === 0 ? "true" : "false"}
         class:list={[
-          "filter-btn relative rounded-full border border-ink/15 px-5 py-2 text-sm font-medium text-ink/70 transition-colors hover:border-ink hover:text-ink",
+          "filter-btn rounded-full px-5 py-2 text-[13px] font-medium uppercase tracking-[0.1px] transition-colors duration-300",
+          i === 0
+            ? "bg-ink text-paper"
+            : "bg-mist text-ink/70 hover:bg-ink/10 hover:text-ink",
         ]}
       >
         {f.label}
@@ -41,18 +34,92 @@ const filters: { value: "all" | PortfolioCategory; label: string }[] = [
   }
 </div>
 
+<style>
+  .filter-btn {
+    border: 1px solid transparent;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.2s ease;
+  }
+  .filter-btn:hover {
+    transform: translateY(-1px);
+  }
+  .filter-btn[aria-selected="true"] {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .filter-btn {
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .filter-btn:hover {
+      transform: none;
+    }
+  }
+</style>
+
 <script>
   const init = () => {
-    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
-    const cards = document.querySelectorAll<HTMLElement>("[data-cat]");
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+    const items = document.querySelectorAll<HTMLElement>(".portfolio-item");
+    const grid = document.querySelector<HTMLElement>(
+      ".portfolio-grid .flex-wrap"
+    );
 
-    const apply = (value: string) => {
-      cards.forEach((c) => {
-        const show = value === "all" || c.dataset.cat === value;
-        c.classList.toggle("hidden", !show);
+    if (items.length === 0) return;
+
+    // Snapshot original positions so we can animate without layout jumps
+    const apply = (filter: string) => {
+      const showItems: HTMLElement[] = [];
+      const hideItems: HTMLElement[] = [];
+
+      items.forEach((item) => {
+        const cat = item.dataset.cat ?? "";
+        const match = filter === "all" || cat === filter;
+        (match ? showItems : hideItems).push(item);
       });
+
+      // Animate out first
+      hideItems.forEach((item, idx) => {
+        const delay = idx * 18;
+        item.style.transition =
+          "opacity 220ms cubic-bezier(0.4, 0, 0.2, 1), transform 240ms cubic-bezier(0.4, 0, 0.2, 1)";
+        item.style.transitionDelay = `${delay}ms`;
+        item.style.opacity = "0";
+        item.style.transform = "scale(0.96)";
+        setTimeout(() => {
+          item.style.display = "none";
+          item.style.transitionDelay = "";
+        }, 260 + delay);
+      });
+
+      // Then bring in the new ones with stagger
+      showItems.forEach((item, idx) => {
+        const isFirst =
+          item.style.display === "none" || !item.style.display;
+        if (isFirst) {
+          const delay = idx * 24;
+          item.style.display = "";
+          item.style.opacity = "0";
+          item.style.transform = "translateY(4px) scale(0.99)";
+          item.style.transition = "none";
+          requestAnimationFrame(() => {
+            item.style.transition =
+              `opacity 280ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 320ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`;
+            item.style.opacity = "1";
+            item.style.transform = "translateY(0) scale(1)";
+          });
+        }
+      });
+
       buttons.forEach((b) => {
-        b.setAttribute("aria-pressed", String(b.dataset.filter === value));
+        const active = b.dataset.filter === filter;
+        b.setAttribute("aria-selected", String(active));
+        b.classList.toggle("bg-ink", active);
+        b.classList.toggle("text-paper", active);
+        b.classList.toggle("bg-mist", !active);
+        b.classList.toggle("text-ink/70", !active);
       });
     };
 

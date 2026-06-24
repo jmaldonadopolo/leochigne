@@ -1,8 +1,7 @@
 {
   "title": "Krearte Magazine",
   "client": "Krearte",
-  "category": "editorial",
-  "cover": "@/assets/editorial/revista-1.jpg",
-  "featured": false,
-  "order": 14
+  "category": "design",
+  "slug": "14-krearte",
+  "images": ["revista-1.jpg"]
 }

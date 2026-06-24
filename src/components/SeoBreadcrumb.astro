@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  path: string;
+}
+
+const { name, path } = Astro.props;
+const siteUrl = Astro.site?.href ?? "https://www.leochigne.art";
+const itemUrl = new URL(path, siteUrl).href;
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: name, item: itemUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />

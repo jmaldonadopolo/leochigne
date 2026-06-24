@@ -13,76 +13,119 @@ const { item, index = 0, priority = false } = Astro.props;
 const { data, id } = item;
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/**/*.{png,jpg,jpeg,webp,avif}",
+  "/src/assets/portfolio/*/*{png,jpg,jpeg,webp,avif,JPG,JPEG,PNG}",
   { eager: true }
 );
 
-const coverKey = data.cover.replace("@/", "/src/");
-const coverAsset = allImages[coverKey]?.default;
+const projectImages = data.images
+  .map((name) => {
+    const key = `/src/assets/portfolio/${data.slug}/${name}`;
+    return allImages[key]?.default;
+  })
+  .filter((img): img is ImageMetadata => Boolean(img));
 
-const galleryPaths = data.gallery?.map((p) => p.replace("@/", "/src/")) ?? [];
-const galleryAssets = galleryPaths
-  .map((p) => allImages[p]?.default)
-  .filter((a): a is ImageMetadata => Boolean(a));
-
-const allAssets = coverAsset
-  ? [coverAsset, ...galleryAssets.filter((a) => a.src !== coverAsset.src)]
-  : galleryAssets;
-
-const optimized = await Promise.all(
-  allAssets.map((a) =>
-    getImage({ src: a, width: 1600, format: "webp", quality: 82 })
-  )
+const optimizedImages = await Promise.all(
+  projectImages.map(async (img) => {
+    const large = await getImage({
+      src: img,
+      width: 2400,
+      format: "webp",
+      quality: 92,
+    });
+    const thumb = await getImage({
+      src: img,
+      width: 160,
+      format: "webp",
+      quality: 75,
+    });
+    return {
+      src: large.src,
+      w: large.attributes.width ?? 1600,
+      h: large.attributes.height ?? 1200,
+      thumb: thumb.src,
+      tw: thumb.attributes.width ?? 160,
+      th: thumb.attributes.height ?? 120,
+      alt: data.title,
+    };
+  })
 );
 
-const optimizedCover = await getImage({
-  src: coverAsset ?? allAssets[0],
-  width: 900,
-  format: "webp",
-  quality: 80,
-});
-
-const firstSrc = optimized[0]?.src ?? "#";
+const coverImage = projectImages[0];
+const coverThumb = coverImage
+  ? await getImage({ src: coverImage, width: 1100, format: "webp", quality: 85 })
+  : null;
 
 const categoryLabels: Record<string, string> = {
   branding: "Branding",
-  editorial: "Editorial",
-  graphic: "Diseño Gráfico",
-  motion: "Motion Graphics",
+  design: "Editorial",
+  diseño: "Diseño Gráfico",
+  photography: "Motion Graphics",
   video: "Video Editing",
 };
 ---
 
-<article data-cat={data.category} data-gallery-id={id} class="group">
-  <a
-    href={firstSrc}
-    data-lightbox
-    data-gallery-id={id}
-    data-gallery-title={data.title}
-    aria-label={`Ver ${data.title}`}
-    class="block overflow-hidden rounded-xl bg-mist focus:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
-  >
+<article
+  data-cat={data.category}
+  class="portfolio-item w-full px-[15px] pb-[30px] md:w-1/2"
+>
+  <div class="pswp-gallery portfolio-card group" id={`gallery-${id}`}>
     {
-      coverAsset && (
-        <img
-          src={optimizedCover.src}
-          width={optimizedCover.attributes.width ?? 900}
-          height={optimizedCover.attributes.height ?? 675}
-          alt={data.title}
-          loading={priority && index < 3 ? "eager" : "lazy"}
-          fetchpriority={priority && index < 3 ? "high" : "auto"}
-          decoding="async"
-          class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      )
+      optimizedImages.map((img, i) => (
+        <a
+          href={img.src}
+          data-pswp-width={img.w}
+          data-pswp-height={img.h}
+          data-cropped="true"
+          target="_blank"
+          rel="noopener"
+          aria-label={`Ver ${data.title} imagen ${i + 1}`}
+          class:list={[
+            "block overflow-hidden rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2",
+            i > 0 && "sr-only",
+          ]}
+        >
+          <img
+            src={i === 0 && coverThumb ? coverThumb.src : img.thumb}
+            width={i === 0 && coverThumb ? (coverThumb.attributes.width ?? 1100) : img.tw}
+            height={i === 0 && coverThumb ? (coverThumb.attributes.height ?? 825) : img.th}
+            alt={data.client && data.client !== data.title ? `${data.title} – ${data.client}` : data.title}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            class:list={[
+              i === 0
+                ? "aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                : "",
+            ]}
+          />
+        </a>
+      ))
     }
-  </a>
-  <div class="mt-4 text-center">
-    <h3 class="text-base font-semibold tracking-tight md:text-lg">
+  </div>
+  <div
+    class="project-title relative -mt-5 mx-auto w-[calc(100%-30px)] border-b border-ink bg-paper px-4 py-5 text-center transition-colors duration-300 group-hover:bg-mist"
+  >
+    <h4
+      class="mb-1.5 text-[16px] font-light text-text-soft transition-colors duration-300 group-hover:text-accent"
+    >
       {data.title}
-    </h3>
-    <p class="mt-1 text-xs uppercase tracking-wider text-ink/50">
+    </h4>
+    <p class="text-[11px] font-medium uppercase tracking-[0.2em] text-text-faint">
       {categoryLabels[data.category] ?? data.category}
     </p>
   </div>
 </article>
+
+<style>
+  .portfolio-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .portfolio-card:hover {
+    transform: translateY(-3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-card,
+    .portfolio-card img {
+      transition: none !important;
+    }
+  }
+</style>

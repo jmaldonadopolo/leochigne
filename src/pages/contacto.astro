@@ -1,16 +1,22 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import ContactCards from "@/components/ContactCards.astro";
 import UpworkCard from "@/components/UpworkCard.astro";
+import SeoBreadcrumb from "@/components/SeoBreadcrumb.astro";
 
 const description =
-  "Contacta con Leonardo Chigne por WhatsApp, email o Upwork para proyectos de diseño, motion graphics y video.";
+  "Contacta con Leonardo Chigne por WhatsApp, email o Upwork para proyectos de diseño, motion graphics, video y contenido digital. Disponible para colaboraciones internacionales.";
 ---
 
-<Layout
-  title="Contacto"
-  description={description}
->
+<Layout title="Contacto - Leonardo Chigne" description={description}>
+  <Breadcrumb
+    crumbs={[
+      { label: "Home", href: "/" },
+      { label: "Contacto" },
+    ]}
+  />
   <ContactCards />
   <UpworkCard />
+  <SeoBreadcrumb name="Contacto" path="/contacto" />
 </Layout>

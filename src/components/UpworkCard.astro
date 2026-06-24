@@ -1,34 +1,36 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import LogoUpwork from "@/assets/Upwork_Logo.svg";
-import ProfileUpWork from "@/assets/ProfileUpWork.png";
+import ProfileUpWork from "@/assets/ProfileUpWork-real.png";
+
+const profileUrl = (
+  await getImage({ src: ProfileUpWork, width: 1100, format: "webp", quality: 88 })
+).src;
 ---
 
-<section aria-labelledby="upwork-title" class="section">
+<section class="bg-paper pb-20 md:pb-[120px]">
   <div class="container-page">
-    <div class="flex flex-col items-center text-center">
+    <div class="text-center">
       <Image
         src={LogoUpwork}
         alt="Upwork"
-        height={28}
+        height={30}
         loading="lazy"
-        class="h-6 w-auto opacity-90"
+        class="mx-auto mb-8 h-7 w-auto md:mb-10"
       />
-      <h2 id="upwork-title" class="sr-only">Perfil de Upwork</h2>
       <a
         href="https://www.upwork.com/freelancers/~01b991c824881741b8"
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-8 block max-w-md transition-opacity hover:opacity-90"
+        class="inline-block rounded-lg transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
         aria-label="Ver perfil de Leonardo Chigne en Upwork"
       >
-        <Image
-          src={ProfileUpWork}
-          alt="Perfil de Leonardo Chigne en Upwork"
-          width={520}
-          densities={[1, 2]}
+        <img
+          src={profileUrl}
+          alt="Perfil de Leonardo Chigne en Upwork: 100% Job Success, Top Rated Plus, 109 trabajos, 3,402 horas"
           loading="lazy"
-          class="w-full rounded-xl shadow-sm"
+          decoding="async"
+          class="mx-auto w-full max-w-3xl rounded-lg shadow-sm"
         />
       </a>
     </div>

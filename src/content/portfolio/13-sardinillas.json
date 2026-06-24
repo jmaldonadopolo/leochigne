@@ -2,7 +2,6 @@
   "title": "Packaging Sardinillas",
   "client": "Sardinillas",
   "category": "branding",
-  "cover": "@/assets/branding/sardinillas.jpg",
-  "featured": false,
-  "order": 13
+  "slug": "13-sardinillas",
+  "images": ["sardinillas.jpg"]
 }

@@ -21,7 +21,7 @@ export default defineConfig({
           "chevron-right",
           "arrow-up",
         ],
-        "simple-icons": ["upwork", "behance", "linkedin", "facebook", "whatsapp"],
+        "simple-icons": ["upwork", "behance", "linkedin", "facebook", "twitter", "whatsapp"],
       },
     }),
   ],

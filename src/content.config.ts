@@ -2,7 +2,7 @@ import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
-const categories = ["branding", "editorial", "graphic", "motion", "video"] as const;
+const categories = ["branding", "design", "diseño", "photography", "video"] as const;
 
 const portfolio = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/portfolio" }),
@@ -10,10 +10,8 @@ const portfolio = defineCollection({
     title: z.string(),
     client: z.string(),
     category: z.enum(categories),
-    cover: z.string(),
-    gallery: z.array(z.string()).optional(),
-    featured: z.boolean().default(false),
-    order: z.number().default(0),
+    slug: z.string(),
+    images: z.array(z.string()).min(1),
   }),
 });
 

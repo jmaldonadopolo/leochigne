@@ -2,7 +2,6 @@
   "title": "Cerveza The Pirate",
   "client": "Cerveza The Pirate",
   "category": "branding",
-  "cover": "@/assets/branding/cerveza-the-pirate.png",
-  "featured": true,
-  "order": 7
+  "slug": "07-cerveza-the-pirate",
+  "images": ["cerveza-the-pirate.png"]
 }

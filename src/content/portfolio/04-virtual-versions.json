@@ -1,8 +1,7 @@
 {
   "title": "Virtual Versions",
   "client": "Virtual Versions",
-  "category": "motion",
-  "cover": "@/assets/motion/virtual-1.jpg",
-  "featured": false,
-  "order": 4
+  "category": "photography",
+  "slug": "04-virtual-versions",
+  "images": ["virtual-1.jpg"]
 }

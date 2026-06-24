@@ -1,55 +1,63 @@
 ---
-import { Icon } from "astro-icon/components";
+import { getImage } from "astro:assets";
+import s2 from "@/assets/contact/s2.jpg";
+import s3 from "@/assets/contact/s3.jpg";
+
+const s2Url = (await getImage({ src: s2, width: 800, format: "webp", quality: 80 })).src;
+const s3Url = (await getImage({ src: s3, width: 800, format: "webp", quality: 80 })).src;
 
 const cards = [
-  {
-    title: "Teléfono",
-    value: "+34 747 412 444",
-    href: "tel:+34747412444",
-    icon: "mdi:phone",
-  },
-  {
-    title: "Email",
-    value: "leochigne@gmail.com",
-    href: "mailto:leochigne@gmail.com",
-    icon: "mdi:email-outline",
-  },
+  { title: "Teléfono", value: "+34 747 412 444", href: "tel:+34747412444", bg: s2Url },
+  { title: "Email", value: "leochigne@gmail.com", href: "mailto:leochigne@gmail.com", bg: s3Url },
 ];
 ---
 
-<section aria-labelledby="contact-title" class="section bg-mist">
+<div class="bg-paper pt-8 pb-20 md:pt-12 md:pb-[120px]">
   <div class="container-page">
-    <h2
-      id="contact-title"
-      class="text-center text-3xl font-semibold tracking-tight md:text-4xl"
-    >
-      Hablemos
-    </h2>
-    <p class="mx-auto mt-3 max-w-prose text-center text-ink/70">
-      Disponible para proyectos freelance, colaboraciones y consultas.
-    </p>
-
-    <div class="mt-12 grid gap-6 md:grid-cols-2">
+    <div class="grid gap-6 sm:grid-cols-2">
       {
         cards.map((c) => (
           <a
             href={c.href}
-            class="surface-card group flex flex-col items-center justify-center transition-transform hover:-translate-y-1"
+            aria-label={`Contactar por ${c.title}: ${c.value}`}
+            class="info-box group relative flex h-[260px] items-center justify-center overflow-hidden rounded-lg bg-cover bg-center transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-2 focus-visible:ring-offset-ink md:h-[290px]"
+            style={`background-image: linear-gradient(rgba(22, 24, 28, 0.7), rgba(22, 24, 28, 0.85)), url('${c.bg}');`}
           >
-            <Icon
-              name={c.icon}
-              class="size-10 text-paper/80 group-hover:text-paper transition-colors"
-              aria-hidden="true"
-            />
-            <h3 class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-paper/60">
-              {c.title}
-            </h3>
-            <p class="mt-2 text-lg font-medium text-paper md:text-xl">
-              {c.value}
-            </p>
+            <div class="relative z-[2] px-6 text-center">
+              <h3 class="mb-1 text-[12px] font-bold uppercase tracking-[0.2em] text-paper/80">
+                {c.title}
+              </h3>
+              <span class="info-vshape mx-auto my-3 block" />
+              <p class="text-[18px] font-light leading-7 text-paper transition-colors group-hover:text-mute">
+                {c.value}
+              </p>
+            </div>
           </a>
         ))
       }
     </div>
   </div>
-</section>
+</div>
+
+<style>
+  .info-vshape {
+    position: relative;
+    width: 1px;
+    height: 20px;
+    margin: 12px auto;
+    background: #fff;
+  }
+  .info-vshape::before,
+  .info-vshape::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 1px;
+    height: 10px;
+    background: #fff;
+  }
+  .info-vshape::before { left: -6px; }
+  .info-vshape::after { right: -6px; }
+</style>
